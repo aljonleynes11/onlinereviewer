@@ -6,13 +6,12 @@
 
 <div class="row">
   <div class="col md12">
-    <table>
-      <td>  <small>English is : {{$english}}</small></td>
-      <td>  <small>Filipino is : {{$filipino}}</small></td>
-      <td> <small>General education is : {{$gened}}</small></td>
-      <td><small>logic is : {{$logic}}</small></td>
-      <td><small>Math is : {{$math}}</small></td>
-    </table>
+    <small>English is : {{$english}}</small>
+    <small>Filipino is : {{$filipino}}</small>
+    <small>General education is : {{$gened}}</small>
+    <small>Logic is : {{$logic}}</small>
+    <small>Math is : {{$math}}</small>
+    
     @if(count($questions) > 0)
       <table>
           <thead>

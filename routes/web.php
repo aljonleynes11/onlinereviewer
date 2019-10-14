@@ -1,6 +1,7 @@
 
 <?php
 use App\csequestions;
+use App\blog;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +16,10 @@ use App\csequestions;
 
 Route::get('/', function () {
     $count=csequestions::count();
+    $getblog5=blog::orderBy('created_at','DESC')->get();
     return view('welcome')
-    ->with('count', $count);
+    ->with('count', $count)
+    ->with('getblog5',$getblog5);
 });
 
 Route::get('/logout', function () {
@@ -63,6 +66,11 @@ Route::get('civil-service-examination-General-education', 'csecontroller@general
 
 Route::get('civil-service-examination-math', 'csecontroller@math');
 Route::get('civil-service-examination-Math', 'csecontroller@math');
+
+
+Route::resource('blog', 'blogcontroller');
+Route::post('blog/create', 'blogcontroller@store');
+Route::get('blog/{blog}-{slug}', 'blogcontroller@show');
 
 
 

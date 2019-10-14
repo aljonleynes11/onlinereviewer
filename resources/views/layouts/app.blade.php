@@ -15,9 +15,11 @@
 </head>
 
 <body>
+	@auth
 		@if(auth::user()->role=="admins")
-		@include('admin.app')
-	@endif
+			@include('admin.app')
+		@endif
+	@endauth
 <!-- Dropdown Structure -->
 <nav class="blue darken-2">
     <div class="nav-wrapper">
@@ -29,7 +31,7 @@
 		<li><a class="waves-effect waves-light btn   red lighten-2 modal-trigger" href="#modalLogin">Login</a></li>
 	  @else
 		{{-- <li><a class="waves-effect waves-light btn   yellow darken-2" href="/home">Profile</a></li> --}}
-	    <li><a class="waves-effect waves-light btn   green lighten-2" href="/home">Settings</a></li>
+	    <li><a class="waves-effect waves-light btn   green lighten-2" href="/home">Dashboard</a></li>
 		<li><a class="waves-effect waves-light btn   red lighten-2" href="/logout">Logout</a></li>
 	  @endguest
       </ul>
@@ -41,7 +43,7 @@
 			<li><a class="waves-effect waves-light btn   red lighten-2 modal-trigger" href="#modalLogin">Login</a></li>
 	  @else
 			{{-- <li><a class="waves-effect waves-light btn   yellow darken-2" href="/home">Profile</a></li> --}}
-	  	<li><a class="waves-effect waves-light btn   green lighten-2" href="/home">Settings</a></li>
+	  	<li><a class="waves-effect waves-light btn   green lighten-2" href="/home">Dashboard</a></li>
 			<li><a class="waves-effect waves-light btn   red lighten-2" href="/logout">Logout</a></li>
 	  @endguest
 </ul>
@@ -90,7 +92,22 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>   
 </body>
 </html>
-
+@if(count($errors) > 0)
+  @foreach($errors->all() as $error)
+    <script>
+      $(document).ready(function(){
+        M.toast({html: "{{$error}}"}, 5000, 'green') 
+      });
+    </script>
+  @endforeach
+@endif
+@if(Session::has('message'))
+  <script>
+    $(document).ready(function(){
+    M.toast({html: "{{ Session::get('message') }}"}, 5000, 'green') 
+    });
+  </script>
+@endif
 
 <script>
 $(document).ready(function(){

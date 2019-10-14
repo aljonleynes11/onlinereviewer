@@ -95,7 +95,7 @@ class csecontroller extends Controller
 		
     public function filipino()
     {
-        $myquestions=csequestions::where('subject', 'english')->inRandomOrder()->limit(10)->get();
+        $myquestions=csequestions::where('subject', 'filipino')->inRandomOrder()->limit(10)->get();
         $keys=$myquestions->keys();
         $page="Filipino";
           return view('cse.quiz')

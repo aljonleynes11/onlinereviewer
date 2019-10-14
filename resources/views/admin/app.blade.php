@@ -9,5 +9,7 @@
  <li>
     <a href="/home" class="btn red">Review Questions</a>
    <a href="/admin-submit-question" class="btn">Add Question</a>
+   <a href="/blog/create" class="btn yellow lighten-2 black-text">Add Blog</a>
  </li>
 </ul>
+

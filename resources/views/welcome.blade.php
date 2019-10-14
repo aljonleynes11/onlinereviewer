@@ -1,79 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>{{ config('app.name', 'Laravel') }}</title>
-	<link href="{{ asset('css/style.css') }}" rel="stylesheet">
-	<link rel="shortcut icon" href="images/logo.ico" type="image/x-icon"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
-</head>
-@if(auth::user()->role=="admins")
-  @include('admin.app')
-@endif
-<body>
-<!-- Dropdown Structure -->
-<nav class="blue darken-2">
-    <div class="nav-wrapper">
-      <a href="/" class="brand-logo">{{ config('app.name', 'Laravel') }}</a>
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      <ul class="right hide-on-med-and-down">
-	  @guest
-		<!-- <li><a class="waves-effect waves-light btn yellow accent-2 black-text modal-trigger" href="#modalRegister">Register</a></li> -->
-		<li><a class="waves-effect waves-light btn   red lighten-2 modal-trigger" href="#modalLogin">Login</a></li>
-	  @else
-      {{-- <li><a class="waves-effect waves-light btn   yellow darken-2" href="/home">Profile</a></li> --}}
-      <li class=""><a class="btn" href="#">{{auth::user()->name}}</a></li>
-	    <li><a class="waves-effect waves-light btn   green lighten-2" href="/home">Settings</a></li>
-		<li><a class="waves-effect waves-light btn   red lighten-2" href="/logout">Logout</a></li>
-	  @endguest
-      </ul>
-    </div>
-  </nav>
-<ul class="sidenav" id="mobile-demo">
-		@guest
-			<!-- <li><a class="waves-effect waves-light btn yellow accent-2 black-text modal-trigger" href="#modalRegister">Register</a></li> -->
-			<li><a class="waves-effect waves-light btn   red lighten-2 modal-trigger" href="#modalLogin">Login</a></li>
-	  @else
-          {{-- <li><a class="waves-effect waves-light btn   yellow darken-2" href="/home">Profile</a></li> --}}
-          <li class=""><a class="btn" href="#">{{auth::user()->name}}</a></li>
-	     	<li><a class="waves-effect waves-light btn   green lighten-2" href="/home">Settings</a></li>
-			<li><a class="waves-effect waves-light btn   red lighten-2" href="/logout">Logout</a></li>
-	  @endguest
-</ul>
+@extends('layouts.app')
+
+@section('content')
+
+
 
 	 <div class="carousel carousel-slider center">
     <div class="carousel-item red lighten-2 white-text" href="#one!">
-      <h2>News 1</h2>
-      <p class="white-text">This is your first panel</p>
+    <a href="/blog/{{$getblog5->get(0)->id}}-{{$getblog5->get(0)->title}}" class="white-text">
+      <h2>{{$getblog5->get(0)->title}}</h2>
+    <p class="white-text">{{str_limit($getblog5->get(0)->title, 100, '  Read more')}}</p>
+      </a>
     </div>
     <div class="carousel-item blue darken-2 white-text" href="#two!">
-      <h2 class="">News 2</h2>
-      <p class="white-text">This is your second panel</p>
+        <a href="/blog/{{$getblog5->get(1)->id}}-{{$getblog5->get(1)->title}}" class="white-text">
+      <h2 class="">{{$getblog5->get(1)->title}}</h2>
+      <p class="white-text">{{str_limit($getblog5->get(1)->title, 100, '  Read more')}}</p>
+        </a>
     </div>
     <div class="carousel-item yellow lighten-2 black-text" href="#three!">
-      <h2 class="">News 3</h2>
-      <p class="black-text">This is your third panel</p>
+        <a href="/blog/{{$getblog5->get(2)->id}}-{{$getblog5->get(2)->title}}" class="black-text">
+      <h2 class="">{{$getblog5->get(2)->title}}</h2>
+      <p class="black-text">{{str_limit($getblog5->get(2)->title, 100, '  Read more')}}</p>
+        </a>
     </div>
     <div class="carousel-item green darken-3 white-text" href="#four!">
-      <h2>News 4</h2>
-      <p class="white-text">This is your fourth panel</p>
+        <a href="/blog/{{$getblog5->get(3)->id}}-{{$getblog5->get(3)->title}}" class="white-text">
+      <h2>{{$getblog5->get(3)->title}}</h2>
+      <p class="white-text">{{str_limit($getblog5->get(3)->title, 100, '  Read more')}}</p>
+        </a>
     </div>
 		<div class="carousel-item teal white-text" href="#five!">
-      <h2>News 5</h2>
-      <p class="white-text">This is your Fifth panel</p>
+        <a href="/blog/{{$getblog5->get(4)->id}}-{{$getblog5->get(4)->title}}" class="white-text">
+      <h2>{{$getblog5->get(4)->title}}</h2>
+      <p class="white-text">{{str_limit($getblog5->get(4)->title, 100, '  Read more')}}</p>
+        </a>
     </div>
   </div> 
-  {{-- <div class="carousel">
-      <a class="carousel-item" href="#one!"><img src="https://lorempixel.com/250/250/nature/1"></a>
-      <a class="carousel-item" href="#two!"><img src="https://lorempixel.com/250/250/nature/2"></a>
-      <a class="carousel-item" href="#three!"><img src="https://lorempixel.com/250/250/nature/3"></a>
-      <a class="carousel-item" href="#four!"><img src="https://lorempixel.com/250/250/nature/4"></a>
-      <a class="carousel-item" href="#five!"><img src="https://lorempixel.com/250/250/nature/5"></a>
-    </div> --}}
+
 <nav>
     <div class="nav-wrapper red lighten-2">
       <a href="#" class="brand-logo right hide-on-med-and-down">{{ config('app.name', 'Laravel') }}</a>
@@ -90,7 +53,7 @@
       
       <ul id="nav-mobile black-text" class="left ">
         <li><a href="/submit-question" class="black-text">Submit a Question</a></li>
-        <li><a href="#" class="black-text">Blogs</a></li>
+        <li><a href="/blog" class="black-text">Blogs</a></li>
       </ul>
     </div>
   </nav>
@@ -136,37 +99,6 @@
 <!-- end modal -->
 </div>
 </div>
-<div id="modalLogin" class="modal">
-<div class="modal-content">
-	<h4>Login</h4>
-	<div class="row">
-<form class="col s12" method="POST" action="{{ route('login') }}">
-  @csrf
-<label for="email">{{ __('E-Mail Address') }}</label>
-  <input id="email" type="email" class=" @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-    @error('email')
-    	<span class="invalid-feedback" role="alert">
-    	    <strong>{{ $message }}</strong>
-			</span>
-			<br>
-    @enderror
-<br>
-<label for="password">{{ __('Password') }}</label>
-  <input id="password" type="password" class=" @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-		@error('password')
-      <span class="invalid-feedback" role="alert">
-          <strong>{{ $message }}</strong>
-			</span>
-			<br>
-		@enderror
-</div>
-  <div class="modal-footer">
-	<button type="submit" class="waves btn ">
-      {{ __('Login') }}
-  </button>
-</form>
-  </div>
-	</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>  
 <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script> 
@@ -192,10 +124,10 @@ var typewriter = new Typewriter(app, {
 
 typewriter
 .pauseFor(1500)
-.typeString('Civil Service Examination Review (CSE)')
+.typeString('Civil Service Examination Reviewer (CSE)')
 .pauseFor(1500)
 .deleteChars(50)
-.typeString('Licensure Examination Reviewer (LET)')
+.typeString('Licensure Examination for Teachers Reviewer (LET)')
 .pauseFor(1500)
 .deleteChars(50)
 .typeString('PNP Entrance Exam Reviewer (NAPOLCO)')
@@ -213,8 +145,11 @@ typewriter
 
 
 </script>
-</body>
-</html>
+
+
+@endsection
+
+
 
 <style>
 
@@ -227,5 +162,7 @@ typewriter
   width: 50%;
 }
 
-
+a{
+  text-decoration:none;
+}
 </style>

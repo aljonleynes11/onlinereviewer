@@ -18,22 +18,7 @@
 <small>Congratulations we have {{$count}} questions for CSE</small>
   </div>
 </div>
-@if(Session::has('message'))
-  <script>
-    $(document).ready(function(){
-    M.toast({html: "{{ Session::get('message') }}"}, 5000, 'green') 
-    });
-  </script>
-@endif
-@if(count($errors) > 0)
-  @foreach($errors->all() as $error)
-    <script>
-      $(document).ready(function(){
-        M.toast({html: "{{$error}}"}, 5000, 'green') 
-      });
-    </script>
-  @endforeach
-@endif
+
 
 <div class="row">
 <div class="col m12 s12">

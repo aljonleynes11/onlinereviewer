@@ -16,16 +16,25 @@ class submitquestioncontroller extends Controller
      */
     public function index()
     {
-        if(auth::user()->role=="admins")
-        {
-            return redirect('/admin-submit-question');
-        }else{
-
-        
         $count=csequestions::where('publish', '1')->count();
-        return view('submitquestion.index')
-        ->with('count', $count);
-    }
+			if(auth::check())
+			{
+				if(auth::user()->role=="admins")
+				{
+					return redirect('/admin-submit-question');
+                }
+                else
+                {
+                
+                    return view('submitquestion.index')
+                    ->with('count', $count);
+                }
+			}
+			else
+			{
+      return view('submitquestion.index')
+      ->with('count', $count);
+   			}
     }
 
     /**

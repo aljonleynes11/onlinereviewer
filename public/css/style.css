@@ -1,3 +1,41 @@
 *{	
     font-family : 'Roboto Condensed', sans-serif;
 }
+
+.pd-t1{
+	padding-top: 3vh
+}
+
+.pd-b1{
+	padding-bottom: 3vh
+}
+
+.pd-l1{
+	padding-left: 3vw
+}
+.pd-r1{
+	padding-right: 3vw
+}
+.pd-1{
+	padding:3vh 3vw
+}
+
+/* new one */
+.pd-t2{
+	padding-top: 6vh
+}
+
+.pd-b2{
+	padding-bottom: 3vh
+}
+
+.pd-l2{
+	padding-left: 6vw
+}
+.pd-r2{
+	padding-right: 6vw
+}
+
+.pd-2{
+	padding:6vh 6vw;
+}

@@ -19,39 +19,47 @@
 <div class="container section">
 <div class="col m12 s12">
 	<div class="card white z-depth-5">
-    <div class="card-content dark-text center-align">
+    <div class="card-content dark-text ">
       <span class="card-title">Civil Service Examination ( CSE )
-      <a href="/civil-service-examination" class="right-align waves-effect waves-yellow red lighten-2 btn-small">Take Quiz
+      </div> 
+      <div class="card-action right-align ">
+      <a href="/civil-service-examination" class=" waves-effect waves-yellow red lighten-2 btn-small">Take Quiz
       <i class="material-icons right">send</i></a></span>
     </div>
   </div>
 </div>
 
-<div class="col m4 s12">
+<div class="col m12 s12">
 	<div class="card white z-depth-5">
-    <div class="card-content dark-text center-align">
+    <div class="card-content dark-text ">
       <span class="card-title">Licensure Examination for Teachers ( LET )
-      <a href="#" class="right-align waves-effect waves-yellow red lighten-2 btn-small">Coming Soon
+      </div> 
+      <div class="card-action right-align">
+      <a href="#" class=" waves-effect waves-yellow red lighten-2 btn-small">Coming Soon
       <i class="material-icons right">send</i></a></span>
     </div>
   </div>
 </div>
 
-<div class="col m4 s12">
+<div class="col m12 s12">
 	<div class="card white z-depth-5">
-    <div class="card-content dark-text center-align">
+    <div class="card-content dark-text ">
       <span class="card-title">UP College Admission Test ( UPCAT )
-      <a href="#" class="right-align waves-effect waves-yellow red lighten-2 btn-small">Coming Soon
+      </div> 
+      <div class="card-action right-align">
+      <a href="#" class=" waves-effect waves-yellow red lighten-2 btn-small">Coming Soon
       <i class="material-icons right">error</i></a></span>
     </div>
   </div>
 </div>
 
-<div class="col m4 s12">
+<div class="col m12 s12">
 	<div class="card white z-depth-5">
-    <div class="card-content dark-text center-align">
-      <span class="card-title">PNP Entrance Exam <br> ( Napolco )
-      <a href="#" class="right-align waves-effect waves-yellow red lighten-2 btn-small">Coming Soon
+    <div class="card-content dark-text ">
+      <span class="card-title">PNP Entrance Exam ( Napolco )
+      </div> 
+      <div class="card-action right-align">
+      <a href="#" class=" waves-effect waves-yellow red lighten-2 btn-small">Coming Soon
       <i class="material-icons right">error</i></a></span>
     </div>
   </div>
