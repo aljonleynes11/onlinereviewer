@@ -3,7 +3,7 @@
 @section('content')
 
 
-
+@if(count($getblog5) > 0)
 	 <div class="carousel carousel-slider center">
     <div class="carousel-item red lighten-2 white-text" href="#one!">
     <a href="/blog/{{$getblog5->get(0)->id}}-{{$getblog5->get(0)->title}}" class="white-text">
@@ -36,7 +36,7 @@
         </a>
     </div>
   </div> 
-
+@endif
 <nav>
     <div class="nav-wrapper red lighten-2">
       <a href="#" class="brand-logo right hide-on-med-and-down">{{ config('app.name', 'Laravel') }}</a>
@@ -97,6 +97,29 @@
 
 
 <!-- end modal -->
+<div class="col m12 center-align">
+
+<h3>We have {{$count}} questions for you!</h3>
+
+</div>
+</div>
+@if(count($getblog5) > 0)
+<div class="row" style="margin: 3vh 3vw; padding:3vh 3vw;">
+  <h3>Blogs</h3>
+  <div class="divider" style="margin-bottom:5vh"></div>
+  @foreach ($getblog5 as $item)
+  <div class="col m4 card s12" style="padding: 2vh 2vw 0 1vw;" >
+  <span class="card-title"> {{str_limit($item->title, 30, ' ..' )}} </span>
+  {!!str_limit($item->body, 30, ' ..  <span class="blue-text"> Read more </span>' )!!}
+  <div class="card-action right">  
+  <a href="/blog/{{$item->id}}-{{$item->title}}" class="white-text btn black"> Read </a>
+  </div>
+  </div>
+  
+  @endforeach
+  @endif
+
+
 </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

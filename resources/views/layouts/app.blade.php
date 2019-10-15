@@ -12,6 +12,7 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
 	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+	<script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5da5af8dad0f870013829afb&product=inline-share-buttons" async="async"></script>
 </head>
 
 <body>
@@ -31,7 +32,12 @@
 		<li><a class="waves-effect waves-light btn   red lighten-2 modal-trigger" href="#modalLogin">Login</a></li>
 	  @else
 		{{-- <li><a class="waves-effect waves-light btn   yellow darken-2" href="/home">Profile</a></li> --}}
-	    <li><a class="waves-effect waves-light btn   green lighten-2" href="/home">Dashboard</a></li>
+		@if(auth::user()->role=='admins')
+
+		<li><a class="waves-effect waves-light btn   green lighten-2" href="/home">Settings</a></li>
+			@else 
+			<li><a class="waves-effect waves-light btn   green lighten-2" href="/home">Dashboard</a></li>
+			@endif
 		<li><a class="waves-effect waves-light btn   red lighten-2" href="/logout">Logout</a></li>
 	  @endguest
       </ul>

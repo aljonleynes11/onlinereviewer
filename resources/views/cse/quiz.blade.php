@@ -21,6 +21,8 @@
 <div class="card-panel center-align  grey  lighten-5" id="score" style="display:none">
 <h4 id="showmyscore"></h4>
 <a href="/civil-service-examination-{{$page}}" class="waves-effect waves-purple btn-small z-depth-5">Try again</a>
+
+
 </div>
 <div id="questions">
 <div class="row">

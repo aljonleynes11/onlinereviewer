@@ -27,11 +27,15 @@ Route::get('/logout', function () {
    return redirect('/');
 });
 Route::get('/admin-submit-question', function () {
-    if(auth::user()->role=='admins')
+    if((auth::check()) && (auth::user()->role=="admins"))
     {
     $count=csequestions::where('publish', '1')->count();
     return view('admin.adminsubmitquestion')
     ->with('count', $count);
+    }
+    else
+    {
+        return Redirect::back()->withMessage('Invalid Authentication');
     }
  });
 

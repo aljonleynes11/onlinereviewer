@@ -28,12 +28,14 @@ class blogcontroller extends Controller
      */
     public function create()
     {
-        if (Auth::check())
-        if(auth::user()->role=="admins")
+        if ((Auth::check()) && (auth::user()->role=="admins"))
         {
             return view('blog.create');
         }
-        
+        else
+        {
+            return Redirect::back()->withMessage('Invalid Authentication');
+        }
     }
 
     /**
@@ -44,22 +46,23 @@ class blogcontroller extends Controller
      */
     public function store(Request $request)
     {
-        if (Auth::check())
+        if ((Auth::check()) && (auth::user()->role=="admins"))
         {
-            if(auth::user()->role=="admins")
-            {
-                $this->validate($request,[
-                    'title'=>'required',
-                    'body'=>'required',
-
-                ]);
-                $gettitle=$request->input('title');
-                $blog=new Blog;
-                $blog->title=$request->input('title');
-                $blog->body=$request->input('body');
-                $blog->save();
-                return Redirect::back()->withMessage('Adding Blog Success');
-            }
+            $this->validate($request,[
+                'title'=>'required',
+                'body'=>'required',
+            ]);
+            $gettitle=$request->input('title');
+            $blog=new Blog;
+            $blog->title=$request->input('title');
+            $blog->body=$request->input('body');
+            $blog->save();
+            return Redirect::back()->withMessage('Adding Blog Success');
+        
+        }
+        else
+        {
+            return Redirect::back()->withMessage('Invalid Authentication');
         }
     }
 
@@ -72,8 +75,9 @@ class blogcontroller extends Controller
     public function show(blog $blog)
     {
         // $blog=blog::where('title', $blog)->first();
-
-        return $blog;
+        return view('blog.show')
+        ->with('blog', $blog);
+       
     }
 
     /**
@@ -84,7 +88,14 @@ class blogcontroller extends Controller
      */
     public function edit($id)
     {
-        //
+        if ((Auth::check()) && (auth::user()->role=="admins"))
+        {
+            return view('blog.edit');
+        }
+        else
+        {
+            return Redirect::back()->withMessage('Invalid Authentication');
+        }
     }
 
     /**

@@ -18,13 +18,7 @@
 <small>Congratulations we have {{$count}} questions for CSE</small>
   </div>
 </div>
-@if(Session::has('message'))
-  <script>
-    $(document).ready(function(){
-    M.toast({html: "{{ Session::get('message') }}"}, 5000, 'green') 
-    });
-  </script>
-@endif
+
 
 
 <div class="row">

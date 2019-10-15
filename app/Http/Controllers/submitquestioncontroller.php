@@ -16,25 +16,16 @@ class submitquestioncontroller extends Controller
      */
     public function index()
     {
-        $count=csequestions::where('publish', '1')->count();
-			if(auth::check())
+      $count=csequestions::where('publish', '1')->count();
+			if((auth::check()) && (auth::user()->role=="admins"))
 			{
-				if(auth::user()->role=="admins")
-				{
-					return redirect('/admin-submit-question');
-                }
-                else
-                {
-                
-                    return view('submitquestion.index')
-                    ->with('count', $count);
-                }
+			return redirect('/admin-submit-question');
 			}
 			else
 			{
       return view('submitquestion.index')
-      ->with('count', $count);
-   			}
+      ->with('count', $count)->withMessage('Invalid Authentication');
+   		}
     }
 
     /**
