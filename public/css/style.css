@@ -32,6 +32,13 @@
 	padding-top: 6vh
 }
 
+.mg-t2{
+	margin-top: 6vh
+}
+
+.mg-t1{
+	margin-top: 2vh
+}
 .pd-b2{
 	padding-bottom: 3vh
 }
@@ -45,4 +52,8 @@
 
 .pd-2{
 	padding:6vh 6vw;
+}
+
+a{
+	color:black;
 }

@@ -17,16 +17,23 @@
 </nav>
 
 
-<div class="container" style="margin-top:8%">
+
 <div class="card-panel center-align  grey  lighten-5" id="score" style="display:none">
 <h4 id="showmyscore"></h4>
-<a href="/civil-service-examination-{{$page}}" class="waves-effect waves-purple btn-small z-depth-5">Try again</a>
+<a href="/civil-service-examination-review-{{$page}}" class="waves-effect waves-purple btn-small z-depth-5">Try again</a>
 
 
 </div>
+@if(count($myquestions) > 0)
 <div id="questions">
 <div class="row">
+		<div class="col m3  pd-1 mg-t2">
+				<!--ads here -->
+			</div>
+		<div class="col m6 pd-1 mg-t2">
+		
 		@foreach($myquestions as $i=>$questions)
+		
 		<form action="">
 		<div class="card-panel  grey z-depth-5 lighten-5" id="hover">
 			<h5>{{$i+1}}.)      {{$questions->question}}</h5>	
@@ -39,14 +46,25 @@
 			<label class=""><input name="options{{$i}}" type="radio" id="optionsD{{$i}}" value="{{$questions->option4}}" class="option required with-gap"/><span class="dark-text with-gap">{{$questions->option4}}</span></label>
 			<div class="divider "></div>
 			 <p id="answer{{$i}}" class="answer" style="display:none">{{$questions->answer}}</p>
+		
 		</div>
 		</form>
-		
+
 		@endforeach
+		<button id="submit" class="waves-effect waves-dark btn" style="float:right; margin-top:8%;">Submit</a>
+
 		</div>
-	<button id="submit" class="waves-effect waves-dark btn" style="float:right; margin-top:8%;">Submit</a>
+		<div class="col m3  pd-1 mg-t2">
+					<!--ads here -->
+		</div>
+	</div>
+
+
 </div>
-</div>
+@else 
+<p>No questions yet</p>
+@endif
+
 @endsection
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -61,20 +79,19 @@ $(document).ready(function(){
 	for (i = 0; i < questionslength; i++) {
 		storeanswer.push([$("#answer"+i).text()]);
 	}
-	console.log(storeanswer[0]);
-	console.log(storeanswer[1]);
+
 	$("#submit").click(function(){
 	$(':radio:checked').each(function(){
 			myans.push($(this).val());
 	});
-	console.log(myans);
+
 	for (i = 0; i < storeanswer.length; i++) {
 		if( storeanswer[i] == myans[i])
 		{
 		score++
 		}
 	}
-	console.log(score);
+
 
 	$("#score").fadeIn(2500);
 	$(".answer").show();

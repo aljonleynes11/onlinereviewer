@@ -46,13 +46,8 @@ class HomeController extends Controller
         if(auth::user()->role=="user"){
             return view('home');
         }else if(auth::user()->role=="admins"){
-            return view('admin.cse')
-            ->with('questions',$questions)
-            ->with('math', $math)
-            ->with('logic', $logic)
-            ->with('english', $english)
-            ->with('gened', $gened)
-            ->with('filipino', $filipino);
+            return view('admin.settings');
+  
         }
 }
 }

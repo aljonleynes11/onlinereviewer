@@ -13,7 +13,7 @@
     <small>Math is : {{$math}}</small>
     
     @if(count($questions) > 0)
-      <table>
+    <table class="striped table-responsive">
           <thead>
             <tr>
                
@@ -25,6 +25,7 @@
                 <th>Answer</th>
                 <th>Subject</th>
                 <th>Action</th>
+                <th></th>
             </tr>
           </thead>
           <tbody>
@@ -38,13 +39,22 @@
               <td>{{$quest->option4}}</td>
               <td>{{$quest->answer}}</td>
               <td>{{$quest->subject}}</td>
-              
+              <td> 
+                <a href="/civil-service-examination-review/{{$quest->id}}/edit" class="btn green left-align"> <i class="material-icons">edit</i> </a>
+              </td>
+              <td> <form method="POST" action="{{ route('civil-service-examination-review.destroy', [$quest->id]) }}" style="">
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="btn red" style="margin-top:20px"><i class="material-icons">delete_sweep</i></button>
+              </form></td>
             </tr>
             @endforeach
 
           </tbody>
         </table>
+        <div class="right">
         {{$questions->links()}}
+      </div>
         @else
         <h3>No unpublish questions</h3>
         @endif

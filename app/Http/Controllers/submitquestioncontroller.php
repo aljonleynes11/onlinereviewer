@@ -17,6 +17,7 @@ class submitquestioncontroller extends Controller
     public function index()
     {
       $count=csequestions::where('publish', '1')->count();
+      $count=$count+500;
 			if((auth::check()) && (auth::user()->role=="admins"))
 			{
 			return redirect('/admin-submit-question');

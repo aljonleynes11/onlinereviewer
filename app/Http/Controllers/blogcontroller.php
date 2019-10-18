@@ -16,7 +16,7 @@ class blogcontroller extends Controller
      */
     public function index()
     {
-        $blogs= blog::orderBy('created_at', 'ASC')->get();
+        $blogs= blog::orderBy('created_at', 'DESC')->paginate(15);
         return view('blog.index')
         ->with('blogs',$blogs);
     }
@@ -86,11 +86,12 @@ class blogcontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(blog $blog)
     {
         if ((Auth::check()) && (auth::user()->role=="admins"))
         {
-            return view('blog.edit');
+            return view('blog.edit')
+            ->with('blog', $blog);
         }
         else
         {
@@ -107,7 +108,24 @@ class blogcontroller extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'title'=>'required',
+            'body'=>'required',
+
+        ]);
+        if ((Auth::check()) && (auth::user()->role=="admins"))
+        {
+            $blog=blog::find($id);
+            $blog->title=$request->input('title');
+            $blog->body=$request->input('body');
+            $blog->save();    
+            return Redirect::back()->withMessage('Edit Success');
+        }
+        else
+        {
+            return Redirect::back()->withMessage('Invalid Authentication');
+        }
+    
     }
 
     /**
@@ -116,8 +134,17 @@ class blogcontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(blog $blog)
     {
-        //
+        if ((Auth::check()) && (auth::user()->role=="admins"))
+        {
+        $blog->delete();
+        
+        return redirect('/blog')->withMessage('Blog Deleted');
+        }
+        else
+        {
+            return Redirect::back()->withMessage('Invalid Authentication');
+        }
     }
 }

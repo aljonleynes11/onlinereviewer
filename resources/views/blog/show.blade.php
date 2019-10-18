@@ -6,6 +6,7 @@
     <div class="col s12">
       <a href="/" class="breadcrumb">Home</a>
       <a href="/blog" class="breadcrumb">Blogs</a>
+
     <a href="#" class="breadcrumb">{{str_limit($blog->title, 30, ' .. ' )}} </a>
     </div>
   </div>
@@ -13,7 +14,17 @@
 
  <div class="row" style="padding: 7vh 4vw">
     <div class="col m8 s12" style="padding: 3vh 3vw 0 1vw">
+      @if((auth::check()) && (auth::user()->role=='admins'))
+    
+      <a href="/blog/{{$blog->id}}/edit" class="btn green left-align"> Edit </a>
+      <form method="POST" action="{{ route('blog.destroy', [$blog->id]) }}" style="">
+          @csrf
+          @method('DELETE')
+          <button type="submit" class="btn red" style="margin-top:20px">Delete</button>
+      </form>
+    @endif
     <h3> {{$blog->title}} </h3>
+    <p class="right-align">{{$blog->created_at->diffForHumans()}}</p>
     <div class="divider"></div>
      {!!$blog->body!!}
     </div>
